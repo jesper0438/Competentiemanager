@@ -24,3 +24,4 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 //Routes to authprovider. provider is between {} because you can use multiple options.
 Route::get('socialauth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
 Route::get('socialauth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+Route::resource('/vakexpert', 'VakexpertController');
