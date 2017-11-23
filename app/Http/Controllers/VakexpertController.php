@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\vakexpert;
 use Illuminate\Http\Request;
+use Auth;
 
 class VakexpertController extends Controller
 {
@@ -17,11 +18,13 @@ class VakexpertController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+        public function index()
     {
-        //
+        $vakexperts = Vakexpert::where(['user_id' => Auth::user()->id])->get();
+        return response()->json([
+            'vakexperts'    => $vakexperts,
+        ], 200);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,9 +41,25 @@ class VakexpertController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+       public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'        => 'required|max:255',
+            'competentie' => 'required',
+            'description' => 'required',
+        ]);
+
+        $vakexpert = Vakexpert::create([
+            'name'        => request('name'),
+            'competentie'   => request('competentie'),
+            'description' => request('description'),
+            'user_id'     => Auth::user()->id
+        ]);
+
+        return response()->json([
+            'vakexpert'    => $vakexpert,
+            'message' => 'Success'
+        ], 200);
     }
 
     /**
@@ -72,9 +91,23 @@ class VakexpertController extends Controller
      * @param  \App\vakexpert  $vakexpert
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vakexpert $vakexpert)
+   public function update(Request $request, Task $vakexpert)
     {
-        //
+        $this->validate($request, [
+            'name'        => 'required|max:255',
+            'competentie' => 'required',
+            'description' => 'required',
+            'deadline'    => 'required',
+        ]);
+
+        $vakexpert->name = request('name');
+        $vakexpert->competentie = request('competentie');
+        $vakexpert->description = request('description');
+        $vakexpert->save();
+
+        return response()->json([
+            'message' => 'Vakex[ert] updated successfully!'
+        ], 200);
     }
 
     /**

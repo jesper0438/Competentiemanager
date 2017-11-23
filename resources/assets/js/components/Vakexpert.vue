@@ -21,10 +21,13 @@
                                     Name
                                 </th>
                                 <th>
-                                    Description
+                                    Competentie
                                 </th>
                                 <th>
                                     Action
+                                </th>
+                                <th>
+                                    Description
                                 </th>
                             </tr>
                             <tr v-for="(vakexpert, index) in vakexperts">
@@ -33,12 +36,15 @@
                                     {{ vakexpert.name }}
                                 </td>
                                 <td>
-                                    {{ vakexpert.description }}
+                                    {{ vakexpert.competentie }}
                                 </td>
                                 <td>
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
                                     <button class="btn btn-danger btn-xs">Delete</button>
                                 </td>
+                                <th>
+                                    {{ vakexpert.description }}
+                                </th>
                             </tr>
                             </tbody>
                         </table>
@@ -69,12 +75,17 @@
                                    v-model="vakexpert.name">
                         </div>
                         <div class="form-group">
+                            <label for="competentie">Competentie:</label>
+                            <textarea name="competentie" id="competentie" cols="30" rows="5" class="form-control"
+                                      placeholder="Vakexpert Competentie" v-model="vakexpert.competentie"></textarea>
+                        </div>
+                    </div>
+                     <div class="form-group">
                             <label for="description">Description:</label>
                             <textarea name="description" id="description" cols="30" rows="5" class="form-control"
                                       placeholder="Vakexpert Description" v-model="vakexpert.description"></textarea>
                         </div>
-                    </div>
-                    <div class="modal-footer">
+                         <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" @click="createVakexpert" class="btn btn-primary">Submit</button>
                     </div>
@@ -104,15 +115,20 @@
                                    v-model="update_vakexpert.name">
                         </div>
                         <div class="form-group">
-                            <label for="description">Description:</label>
+                            <label for="competentie">Competentie:</label>
                             <textarea cols="30" rows="5" class="form-control"
-                                      placeholder="Vakexpert Description" v-model="update_vakexpert.description"></textarea>
+                                      placeholder="Vakexpert Competentie" v-model="update_vakexpert.competentie"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" @click="updateVakexpert" class="btn btn-primary">Submit</button>
                     </div>
+                    <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea cols="30" rows="5" class="form-control"
+                                      placeholder="Vakexpert Description" v-model="update_vakexpert.description"></textarea>
+                        </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -126,7 +142,8 @@
             return {
                 vakexpert: {
                     name: '',
-                    description: ''
+                    competentie: '',
+                    description: '',
                 },
                 errors: [],
                 vakexperts: [],
@@ -146,6 +163,7 @@
             {
                 axios.post('/vakexpert', {
                     name: this.vakexpert.name,
+                    competentie: this.vakexpert.competentie,
                     description: this.vakexpert.description,
                 })
                     .then(response => {
@@ -163,6 +181,10 @@
                             this.errors.push(error.response.data.errors.name[0]);
                         }
 
+                        if (error.response.data.errors.competentie) {
+                            this.errors.push(error.response.data.errors.competentie[0]);
+                        }
+
                         if (error.response.data.errors.description) {
                             this.errors.push(error.response.data.errors.description[0]);
                         }
@@ -171,9 +193,10 @@
             reset()
             {
                 this.vakexpert.name = '';
+                this.vakexpert.competentie = '';
                 this.vakexpert.description = '';
             },
-            readVakexpert()
+            readVakexperts()
             {
                 axios.get('/vakexpert')
                     .then(response => {
@@ -192,6 +215,7 @@
             {
                 axios.patch('/vakexpert/' + this.update_vakexpert.id, {
                     name: this.update_vakexpert.name,
+                    competentie: this.update_vakexpert.competentie,
                     description: this.update_vakexpert.description,
                 })
                     .then(response => {
@@ -205,11 +229,31 @@
                             this.errors.push(error.response.data.errors.name[0]);
                         }
 
+                        if (error.response.data.errors.competentie) {
+                            this.errors.push(error.response.data.errors.competentie[0]);
+                        }
+
                         if (error.response.data.errors.description) {
                             this.errors.push(error.response.data.errors.description[0]);
                         }
                     });
             }
-        }
+        },
+                    deleteVakexpert(index)
+            {
+                let conf = confirm("Do you ready want to delete this vakexpert?");
+                if (conf === true) {
+
+                    axios.delete('/vakexpert/' + this.vakexperts[index].id)
+                        .then(response => {
+
+                            this.vakexperts.splice(index, 1);
+
+                        })
+                        .catch(error => {
+
+                        });
+                }
+            }
     }
 </script>

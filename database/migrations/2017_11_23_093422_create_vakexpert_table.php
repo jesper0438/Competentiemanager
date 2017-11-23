@@ -13,9 +13,10 @@ class CreateVakexpertTable extends Migration
      */
     public function up()
     {
-        Schema::create('vakexpert', function (Blueprint $table) {
+        Schema::create('vakexperts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->unsignedInteger('user_id');
             $table->string('competentie');
             $table->text('description');
             $table->timestamps();
@@ -29,6 +30,6 @@ class CreateVakexpertTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vakexpert');
+        Schema::dropIfExists('vakexperts');
     }
 }
