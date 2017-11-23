@@ -5,9 +5,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <button @click="initAddVakexpert()" class="btn btn-primary btn-xs pull-right">
-                            + Add New Vakexpert
+                            + Nieuwe vakexpert
                         </button>
-                        My Vakexperts
+                        Overzicht vakexperts
                     </div>
 
                     <div class="panel-body">
@@ -40,7 +40,7 @@
                                 </td>
                                 <td>
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
-                                    <button class="btn btn-danger btn-xs">Delete</button>
+                                    <button @click="deleteVakexpert(index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                                 <th>
                                     {{ vakexpert.description }}
@@ -59,7 +59,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Add New Vakexpert</h4>
+                        <h4 class="modal-title">Nieuwe vakexpert</h4>
                     </div>
                     <div class="modal-body">
 
@@ -237,9 +237,8 @@
                             this.errors.push(error.response.data.errors.description[0]);
                         }
                     });
-            }
-        },
-                    deleteVakexpert(index)
+            },
+            deleteVakexpert(index)
             {
                 let conf = confirm("Do you ready want to delete this vakexpert?");
                 if (conf === true) {
@@ -254,6 +253,7 @@
 
                         });
                 }
-            }
+            },
+        },
     }
 </script>

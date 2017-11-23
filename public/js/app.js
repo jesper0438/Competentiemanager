@@ -43170,18 +43170,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this3.errors.push(error.response.data.errors.description[0]);
                 }
             });
-        }
-    },
-    deleteVakexpert: function deleteVakexpert(index) {
-        var _this4 = this;
+        },
+        deleteVakexpert: function deleteVakexpert(index) {
+            var _this4 = this;
 
-        var conf = confirm("Do you ready want to delete this vakexpert?");
-        if (conf === true) {
+            var conf = confirm("Do you ready want to delete this vakexpert?");
+            if (conf === true) {
 
-            axios.delete('/vakexpert/' + this.vakexperts[index].id).then(function (response) {
+                axios.delete('/vakexpert/' + this.vakexperts[index].id).then(function (response) {
 
-                _this4.vakexperts.splice(index, 1);
-            }).catch(function (error) {});
+                    _this4.vakexperts.splice(index, 1);
+                }).catch(function (error) {});
+            }
         }
     }
 });
@@ -43211,11 +43211,13 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                        + Add New Vakexpert\n                    "
+                  "\n                        + Nieuwe vakexpert\n                    "
                 )
               ]
             ),
-            _vm._v("\n                    My Vakexperts\n                ")
+            _vm._v(
+              "\n                    Overzicht vakexperts\n                "
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
@@ -43268,7 +43270,14 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "button",
-                                { staticClass: "btn btn-danger btn-xs" },
+                                {
+                                  staticClass: "btn btn-danger btn-xs",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.deleteVakexpert(index)
+                                    }
+                                  }
+                                },
                                 [_vm._v("Delete")]
                               )
                             ]),
@@ -43664,7 +43673,7 @@ var staticRenderFns = [
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       ),
       _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [_vm._v("Add New Vakexpert")])
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Nieuwe vakexpert")])
     ])
   },
   function() {

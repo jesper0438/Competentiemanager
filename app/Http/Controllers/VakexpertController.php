@@ -116,7 +116,7 @@ class VakexpertController extends Controller
      * @param  \App\vakexpert  $vakexpert
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vakexpert $vakexpert)
+    public function destroy(Vakexpert $vakexpert)
     {
         //
     }
