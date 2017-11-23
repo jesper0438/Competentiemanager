@@ -91,13 +91,13 @@ class VakexpertController extends Controller
      * @param  \App\vakexpert  $vakexpert
      * @return \Illuminate\Http\Response
      */
-   public function update(Request $request, Task $vakexpert)
+   public function update(Request $request, Vakexpert $vakexpert)
     {
         $this->validate($request, [
             'name'        => 'required|max:255',
             'competentie' => 'required',
             'description' => 'required',
-            'deadline'    => 'required',
+            
         ]);
 
         $vakexpert->name = request('name');
@@ -106,7 +106,7 @@ class VakexpertController extends Controller
         $vakexpert->save();
 
         return response()->json([
-            'message' => 'Vakex[ert] updated successfully!'
+            'message' => 'Vakexpert updated successfully!'
         ], 200);
     }
 
