@@ -43076,7 +43076,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43282,7 +43281,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("th", [
+                            _c("td", [
                               _vm._v(
                                 "\n                                " +
                                   _vm._s(vakexpert.description) +
@@ -43377,8 +43376,8 @@ var render = function() {
                     attrs: {
                       name: "competentie",
                       id: "competentie",
-                      cols: "30",
-                      rows: "5",
+                      cols: "20",
+                      rows: "2",
                       placeholder: "Vakexpert Competentie"
                     },
                     domProps: { value: _vm.vakexpert.competentie },
@@ -43395,45 +43394,45 @@ var render = function() {
                       }
                     }
                   })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "description" } }, [
-                  _vm._v("Description:")
                 ]),
                 _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.vakexpert.description,
-                      expression: "vakexpert.description"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    name: "description",
-                    id: "description",
-                    cols: "30",
-                    rows: "5",
-                    placeholder: "Vakexpert Description"
-                  },
-                  domProps: { value: _vm.vakexpert.description },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "description" } }, [
+                    _vm._v("Description:")
+                  ]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.vakexpert.description,
+                        expression: "vakexpert.description"
                       }
-                      _vm.$set(
-                        _vm.vakexpert,
-                        "description",
-                        $event.target.value
-                      )
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "description",
+                      id: "description",
+                      cols: "20",
+                      rows: "2",
+                      placeholder: "Vakexpert Description"
+                    },
+                    domProps: { value: _vm.vakexpert.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.vakexpert,
+                          "description",
+                          $event.target.value
+                        )
+                      }
                     }
-                  }
-                })
+                  })
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer" }, [

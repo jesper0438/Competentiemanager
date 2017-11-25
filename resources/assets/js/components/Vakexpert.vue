@@ -42,9 +42,9 @@
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
                                     <button @click="deleteVakexpert(index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
-                                <th>
+                                <td>
                                     {{ vakexpert.description }}
-                                </th>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -71,20 +71,19 @@
 
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" placeholder="Vakexpert Name" class="form-control"
-                                   v-model="vakexpert.name">
+                            <input type="text" name="name" id="name" placeholder="Vakexpert Name" class="form-control"v-model="vakexpert.name">
                         </div>
                         <div class="form-group">
                             <label for="competentie">Competentie:</label>
-                            <textarea name="competentie" id="competentie" cols="30" rows="5" class="form-control"
+                            <textarea name="competentie" id="competentie" cols="20" rows="2" class="form-control"
                                       placeholder="Vakexpert Competentie" v-model="vakexpert.competentie"></textarea>
                         </div>
-                    </div>
                      <div class="form-group">
                             <label for="description">Description:</label>
-                            <textarea name="description" id="description" cols="30" rows="5" class="form-control"
+                            <textarea name="description" id="description" cols="20" rows="2" class="form-control"
                                       placeholder="Vakexpert Description" v-model="vakexpert.description"></textarea>
                         </div>
+                    </div>
                          <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" @click="createVakexpert" class="btn btn-primary">Submit</button>
