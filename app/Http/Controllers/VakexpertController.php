@@ -117,7 +117,12 @@ class VakexpertController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Vakexpert $vakexpert)
-    {
-        //
+     {
+        $vakexpert->id = request('id');
+        $vakexpert->delete();
+        // Op basis van het geselecteerde id wordt deze verwijderd
+        return response()->json([
+        'message' => 'De vakexpert is verwijderd!',
+        ], 200);
     }
 }
