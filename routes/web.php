@@ -20,8 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Controller to Dashboard. Only visible after login
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/markt', 'ProjectenmarktController@index')->name('markt');
+
 
 //Routes to authprovider. provider is between {} because you can use multiple options.
 Route::get('socialauth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
 Route::get('socialauth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 Route::resource('/vakexpert', 'VakexpertController');
+Route::resource('/project', 'ProjectController');
