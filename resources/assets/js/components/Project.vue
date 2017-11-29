@@ -5,9 +5,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <button @click="initAddProject()" class="btn btn-primary btn-xs pull-right">
-                            + Nieuw project
+                            + Add New Project
                         </button>
-                        projectoverzicht
+                        My projects
                     </div>
 
                     <div class="panel-body">
@@ -24,23 +24,19 @@
                                     Uitvoerlocatie
                                 </th>
                                 <th>
-                                    Doel project
+                                    Doel
                                 </th>
                                 <th>
-                                    Beschikbare competenties
+                                    Competenties
                                 </th>
                                 <th>
-                                    Maximaal aantal projectleden
+                                    Maxleden
                                 </th>
                             </tr>
                             <tr v-for="(project, index) in projects">
                                 <td>{{ index + 1 }}</td>
                                 <td>
                                     {{ project.opdrachtgever }}
-                                </td>
-                                <td>
-                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
-                                    <button @click="deleteProject(index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                                 <td>
                                     {{ project.uitvoerlocatie }}
@@ -53,6 +49,10 @@
                                 </td>
                                 <td>
                                     {{ project.maxleden }}
+                                </td>
+                                <td>
+                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
+                                    <button @click="deleteProject(index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -68,7 +68,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Nieuw project</h4>
+                        <h4 class="modal-title">Add New Project</h4>
                     </div>
                     <div class="modal-body">
 
@@ -78,31 +78,33 @@
                             </ul>
                         </div>
 
-                        
                         <div class="form-group">
                             <label for="opdrachtgever">Opdrachtgever:</label>
-                            <input type="text" name="opdrachtgever" id="opdrachtgever" placeholder="Naam opdrachtgever" class="form-control" v-model="project.opdrachtgever">
+                            <input type="text" name="opdrachtgever" id="opdrachtgever" placeholder="OF naam" class="form-control"
+                                   v-model="project.opdrachtgever">
                         </div>
                         <div class="form-group">
                             <label for="uitvoerlocatie">Uitvoerlocatie:</label>
-                            <input type="text" name="uitvoerlocatie" id="uitvoerlocatie" placeholder="Locatie" class="form-control" v-model="project.uitvoerlocatie">
+                            <input type="text" name="uitvoerlocatie" id="uitvoerlocatie" placeholder="uitvoerlocatie" class="form-control"
+                                   v-model="project.uitvoerlocatie">
                         </div>
                         <div class="form-group">
                             <label for="doel">Doel:</label>
-                            <textarea name="doel" id="doel" cols="20" rows="4" class="form-control"
-                                      placeholder="Doel van het project" v-model="project.doel"></textarea>
-                        </div>
-                     <div class="form-group">
-                            <label for="competenties">Competenties:</label>
-                            <textarea name="competenties" id="competenties" cols="20" rows="2" class="form-control"
-                                      placeholder="De mogelijke competenties" v-model="project.competenties"></textarea>
+                            <input type="text" name="doel" id="doel" placeholder="Doel" class="form-control"
+                                   v-model="project.doel">
                         </div>
                         <div class="form-group">
-                            <label for="maxleden">Maximaal aantal projectleden:</label>
-                            <input type="text" name="maxleden" id="maxleden" placeholder="Maximaal aantal projectleden" class="form-control"v-model="project.maxleden">
+                            <label for="competenties">Competenties:</label>
+                            <input type="text" name="competenties" id="competenties" placeholder="competenties" class="form-control"
+                                   v-model="project.competenties">
+                        </div>
+                        <div class="form-group">
+                            <label for="maxleden">Maxleden:</label>
+                            <textarea name="maxleden" id="maxleden" cols="30" rows="5" class="form-control"
+                                      placeholder="Max leden" v-model="project.maxleden"></textarea>
                         </div>
                     </div>
-                         <div class="modal-footer">
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" @click="createProject" class="btn btn-primary">Submit</button>
                     </div>
@@ -116,7 +118,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Update project</h4>
+                        <h4 class="modal-title">Update Project</h4>
                     </div>
                     <div class="modal-body">
 
@@ -126,28 +128,30 @@
                             </ul>
                         </div>
 
-                       
                         <div class="form-group">
-                            <label for="opdrachtgever">Opdrachtgever:</label>
-                            <input type="text" name="opdrachtgever" id="opdrachtgever" placeholder="Naam opdrachtgever" class="form-control"v-model="update_project.opdrachtgever">
+                            <label>Opdrachtgever:</label>
+                            <input type="text" placeholder="opdrachtgever" class="form-control"
+                                   v-model="update_project.opdrachtgever">
                         </div>
                         <div class="form-group">
-                            <label for="uitvoerlocatie">Uitvoerlocatie:</label>
-                            <input type="text" name="uitvoerlocatie" id="uitvoerlocatie" placeholder="Locatie" class="form-control"v-model="update_project.uitvoerlocatie">
+                            <label>Uitvoerlocatie:</label>
+                            <input type="text" placeholder="uitvoerlocatie" class="form-control"
+                                   v-model="update_project.uitvoerlocatie">
                         </div>
                         <div class="form-group">
-                            <label for="doel">Doel:</label>
-                            <textarea name="doel" id="doel" cols="20" rows="4" class="form-control"
-                                      placeholder="Doel van het project" v-model="update_project.doel"></textarea>
-                        </div>
-                     <div class="form-group">
-                            <label for="competenties">Competenties:</label>
-                            <textarea name="competenties" id="competenties" cols="20" rows="4" class="form-control"
-                                      placeholder="De mogelijke competenties" v-model="update_project.competenties"></textarea>
+                            <label>Doel:</label>
+                            <input type="text" placeholder="doel" class="form-control"
+                                   v-model="update_project.doel">
                         </div>
                         <div class="form-group">
-                            <label for="name">Maximaal aantal projectleden:</label>
-                            <input type="text" name="maxleden" id="maxleden" placeholder="Maximaal aantal projectleden" class="form-control"v-model="update_project.maxleden">
+                            <label>Competenties:</label>
+                            <input type="text" placeholder="competenties" class="form-control"
+                                   v-model="update_project.competenties">
+                        </div>
+                        <div class="form-group">
+                            <label>Maxleden:</label>
+                            <input type="text" placeholder="maxleden" class="form-control"
+                                   v-model="update_project.maxleden">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -209,23 +213,18 @@
                         if (error.response.data.errors.opdrachtgever) {
                             this.errors.push(error.response.data.errors.opdrachtgever[0]);
                         }
-
                         if (error.response.data.errors.uitvoerlocatie) {
                             this.errors.push(error.response.data.errors.uitvoerlocatie[0]);
                         }
-
                         if (error.response.data.errors.doel) {
                             this.errors.push(error.response.data.errors.doel[0]);
                         }
-
                         if (error.response.data.errors.competenties) {
                             this.errors.push(error.response.data.errors.competenties[0]);
                         }
-                        
                         if (error.response.data.errors.maxleden) {
                             this.errors.push(error.response.data.errors.maxleden[0]);
                         }
-
                     });
             },
             reset()
@@ -241,7 +240,7 @@
                 axios.get('/project')
                     .then(response => {
 
-                        this.project = response.data.projects;
+                        this.projects = response.data.projects;
 
                     });
             },
@@ -254,11 +253,11 @@
             updateProject()
             {
                 axios.patch('/project/' + this.update_project.id, {
-                    opdrachtgever: this.update_project.opdrachtgever,
-                    uitvoerlocatie: this.update_project.uitvoerlocatie,
-                    doel: this.update_project.doel,
-                    competenties: this.update_project.competenties,
-                    maxleden: this.update_project.maxleden,
+                    opdrachtgever: this.project.opdrachtgever,
+                    uitvoerlocatie: this.project.uitvoerlocatie,
+                    doel: this.project.doel,
+                    competenties: this.project.competenties,
+                    maxleden: this.project.maxleden,
                 })
                     .then(response => {
 
@@ -284,9 +283,9 @@
                         }
                     });
             },
-            deleteProject(index)
+                        deleteProject(index)
             {
-                let conf = confirm("Weet je zeker dat je dit project wilt verwijderen??");
+                let conf = confirm("Do you ready want to delete this project?");
                 if (conf === true) {
 
                     axios.delete('/project/' + this.projects[index].id)
@@ -299,7 +298,7 @@
 
                         });
                 }
-            },
-        },
+            }
+        }
     }
 </script>
