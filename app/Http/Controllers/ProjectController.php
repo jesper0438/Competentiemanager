@@ -48,15 +48,15 @@ class ProjectController extends Controller
             'uitvoerlocatie' => 'required',
             'doel' => 'required',
             'competenties' => 'required',
-            'maxleden' => 'required|min:1|max:20',
+            'maxleden' => 'required',
         ]);
 
         $project = Project::create([
             'opdrachtgever'   => request('opdrachtgever'),
             'uitvoerlocatie' => request('uitvoerlocatie'),
             'doel' => request('doel'),
-            'competenties' =>('competenties'),
-            'maxleden' =>('maxleden'),
+            'competenties' => request('competenties'),
+            'maxleden' => request('maxleden'),
             'user_id'     => Auth::user()->id
         ]);
 
