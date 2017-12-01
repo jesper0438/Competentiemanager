@@ -212,6 +212,7 @@
                         this.errors = [];
                         if (error.response.data.errors.opdrachtgever) {
                             this.errors.push(error.response.data.errors.opdrachtgever[0]);
+                            console.log('Problem with opdrachtgever')
                         }
                         if (error.response.data.errors.uitvoerlocatie) {
                             this.errors.push(error.response.data.errors.uitvoerlocatie[0]);

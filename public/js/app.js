@@ -46510,6 +46510,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.errors = [];
                 if (error.response.data.errors.opdrachtgever) {
                     _this.errors.push(error.response.data.errors.opdrachtgever[0]);
+                    console.log('Problem with opdrachtgever');
                 }
                 if (error.response.data.errors.uitvoerlocatie) {
                     _this.errors.push(error.response.data.errors.uitvoerlocatie[0]);
@@ -47541,11 +47542,11 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                        + Add New Student\n                    "
+                  "\n                        + Student toevoegen\n                    "
                 )
               ]
             ),
-            _vm._v("\n                    My Students\n                ")
+            _vm._v("\n                    Studentenoverzicht\n                ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [

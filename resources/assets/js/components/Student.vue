@@ -5,7 +5,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <button @click="initAddStudent()" class="btn btn-primary btn-xs pull-right">
-                            + Add New Student
+                            + Student toevoegen
                         </button>
                         Studentenoverzicht
                     </div>
