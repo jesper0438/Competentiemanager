@@ -25,3 +25,4 @@ Route::get('socialauth/{provider}', 'Auth\SocialAuthController@redirectToProvide
 Route::get('socialauth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 Route::resource('/vakexpert', 'VakexpertController');
 Route::resource('/project', 'ProjectController');
+Route::resource('/student', 'StudentController');

@@ -61,6 +61,10 @@
                                     <router-link tag="li" to="/project">
                                         <a>Projectenoverzicht</a>
                                     </router-link>
+                                    <router-link tag="li" to="/student">
+                                        <a>Studentenoverzicht</a>
+                                    </router-link>
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

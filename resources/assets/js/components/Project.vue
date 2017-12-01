@@ -5,9 +5,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <button @click="initAddProject()" class="btn btn-primary btn-xs pull-right">
-                            + Add New Project
+                            + Project toevoegen
                         </button>
-                        My projects
+                        Projectoverzicht
                     </div>
 
                     <div class="panel-body">

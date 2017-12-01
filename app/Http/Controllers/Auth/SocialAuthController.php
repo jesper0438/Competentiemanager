@@ -28,7 +28,7 @@ class SocialAuthController extends Controller
 
         auth()->login($authUser);
 
-        return redirect('dashboard'); //Rederict naar een nieuwe pagina. Zo kun je zien dat het autorisatieproces succesvol is.
+        return redirect('home'); //Rederict naar een nieuwe pagina. Zo kun je zien dat het autorisatieproces succesvol is.
 
     }
 }
