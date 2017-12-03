@@ -47422,16 +47422,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             student: {
                 name: '',
-                currentproject: ''
+                currentproject: '',
+                currentcompetenties: ''
             },
             errors: [],
             students: [],
+            details_student: [],
             update_student: {}
         };
     },
@@ -47448,7 +47500,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/student', {
                 name: this.student.name,
-                currentproject: this.student.currentproject
+                currentproject: this.student.currentproject,
+                currentcompetenties: this.student.currentcompetenties
             }).then(function (response) {
 
                 _this.reset();
@@ -47464,11 +47517,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (error.response.data.errors.currentproject) {
                     _this.errors.push(error.response.data.errors.currentproject[0]);
                 }
+                if (error.response.data.errors.currentcompetenties) {
+                    _this.errors.push(error.response.data.errors.currentcompetenties[0]);
+                }
             });
         },
         reset: function reset() {
             this.student.name = '';
             this.student.currentproject = '';
+            this.student.currentcompetenties = '';
         },
         readStudents: function readStudents() {
             var _this2 = this;
@@ -47488,7 +47545,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.patch('/student/' + this.update_student.id, {
                 name: this.update_student.name,
-                currentproject: this.update_student.currentproject
+                currentproject: this.update_student.currentproject,
+                currentcompetenties: this.update_student.currentcompetenties
             }).then(function (response) {
 
                 $("#update_student_model").modal("hide");
@@ -47499,6 +47557,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 if (error.response.data.errors.currentproject) {
                     _this3.errors.push(error.response.data.errors.currentproject[0]);
+                }
+                if (error.response.data.errors.currentcompetenties) {
+                    _this3.errors.push(error.response.data.errors.currentcompetenties[0]);
                 }
             });
         },
@@ -47513,6 +47574,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.students.splice(index, 1);
                 }).catch(function (error) {});
             }
+        },
+
+        //detailsoverzicht
+        initShowStudent: function initShowStudent() {
+            $("#details_student_model").modal("show");
+        },
+        showStudents: function showStudents() {
+            axios.get('/student');
+        },
+        detailsStudent: function detailsStudent(index) {
+
+            $("#details_student_model").modal("show");
+            this.details_student = this.students[index];
         }
     }
 });
@@ -47578,6 +47652,14 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(student.currentcompetenties) +
+                                  "\n                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
                               _c(
                                 "button",
                                 {
@@ -47589,6 +47671,19 @@ var render = function() {
                                   }
                                 },
                                 [_vm._v("Edit")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success btn-xs",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.detailsStudent(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Bekijk details")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -47709,6 +47804,43 @@ var render = function() {
                       }
                     }
                   })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "currentcompetenties" } }, [
+                    _vm._v("Huidige competenties:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student.currentcompetenties,
+                        expression: "student.currentcompetenties"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "currentcompetenties",
+                      id: "currentcompetenties",
+                      placeholder: "Huidige competenties"
+                    },
+                    domProps: { value: _vm.student.currentcompetenties },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.student,
+                          "currentcompetenties",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
                 ])
               ]),
               _vm._v(" "),
@@ -47822,6 +47954,36 @@ var render = function() {
                       }
                     }
                   })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Huidige competenties:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.update_student.currentcompetenties,
+                        expression: "update_student.currentcompetenties"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Huidig project" },
+                    domProps: { value: _vm.update_student.currentcompetenties },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.update_student,
+                          "currentcompetenties",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
                 ])
               ]),
               _vm._v(" "),
@@ -47849,6 +48011,119 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { tabindex: "-1", role: "dialog", id: "details_student_model" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3, false, false),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Naam:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_student.name,
+                        expression: "details_student.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Naam" },
+                    domProps: { value: _vm.details_student.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_student,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Huidig project:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_student.currentproject,
+                        expression: "details_student.currentproject"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Huidig project" },
+                    domProps: { value: _vm.details_student.currentproject },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_student,
+                          "currentproject",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Huidige competenties:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_student.currentcompetenties,
+                        expression: "details_student.currentcompetenties"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Huidig project" },
+                    domProps: {
+                      value: _vm.details_student.currentcompetenties
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_student,
+                          "currentcompetenties",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -47869,6 +48144,12 @@ var staticRenderFns = [
       _c("th", [
         _vm._v(
           "\n                                Huidig project\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                Huidige competenties\n                            "
         )
       ]),
       _vm._v(" "),
@@ -47919,6 +48200,27 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Update Student")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Details")])
     ])
   }
 ]

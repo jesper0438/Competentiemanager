@@ -23,6 +23,9 @@
                                     Huidig project
                                 </th>
                                 <th>
+                                    Huidige competenties
+                                </th>
+                                <th>
                                     Action
                                 </th>
                             </tr>
@@ -33,7 +36,11 @@
                                     {{ student.currentproject }}
                                 </td>
                                 <td>
+                                    {{ student.currentcompetenties }}
+                                </td>
+                                <td>
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
+                                    <button @click="detailsStudent(index)" class="btn btn-success btn-xs">Bekijk details</button>
                                     <button @click="deleteStudent(index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                             </tr>
@@ -70,6 +77,11 @@
                             <input type="text" name="currentproject" id="currentproject" placeholder="Huidig project" class="form-control"
                                    v-model="student.currentproject">
                         </div>
+                        <div class="form-group">
+                            <label for="currentcompetenties">Huidige competenties:</label>
+                            <input type="text" name="currentcompetenties" id="currentcompetenties" placeholder="Huidige competenties" class="form-control"
+                                   v-model="student.currentcompetenties">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -104,11 +116,49 @@
                             <input type="text" placeholder="Huidig project" class="form-control"
                                    v-model="update_student.currentproject">
                         </div>
+                        <div class="form-group">
+                            <label>Huidige competenties:</label>
+                            <input type="text" placeholder="Huidig project" class="form-control"
+                                   v-model="update_student.currentcompetenties">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" @click="updateStudent" class="btn btn-primary">Submit</button>
                     </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!--Details view -->
+              <div class="modal fade" tabindex="-1" role="dialog" id="details_student_model">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Details</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        
+                        <div class="form-group">
+                            <label>Naam:</label>
+                            <input type="text" placeholder="Naam" class="form-control"
+                                   v-model="details_student.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Huidig project:</label>
+                            <input type="text" placeholder="Huidig project" class="form-control"
+                                   v-model="details_student.currentproject">
+                        </div>
+                        <div class="form-group">
+                            <label>Huidige competenties:</label>
+                            <input type="text" placeholder="Huidig project" class="form-control"
+                                   v-model="details_student.currentcompetenties">
+                        </div>
+                    </div>
+                    
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -123,15 +173,18 @@
                 student: {
                     name: '',
                     currentproject: '',
+                    currentcompetenties: ''
                 },
                 errors: [],
                 students: [],
+                details_student: [],
                 update_student: {}
             }
         },
         mounted()
         {
             this.readStudents();
+           
         },
         methods: {
             initAddStudent()
@@ -143,6 +196,7 @@
                 axios.post('/student', {
                     name: this.student.name,
                     currentproject: this.student.currentproject,
+                    currentcompetenties: this.student.currentcompetenties,
                 })
                     .then(response => {
 
@@ -161,12 +215,16 @@
                         if (error.response.data.errors.currentproject) {
                             this.errors.push(error.response.data.errors.currentproject[0]);
                         }
+                        if (error.response.data.errors.currentcompetenties) {
+                            this.errors.push(error.response.data.errors.currentcompetenties[0]);
+                        }
                     });
             },
             reset()
             {
                 this.student.name = '';
                 this.student.currentproject = '';
+                this.student.currentcompetenties = '';
             },
             readStudents()
             {
@@ -188,6 +246,7 @@
                 axios.patch('/student/' + this.update_student.id, {
                     name: this.update_student.name,
                     currentproject: this.update_student.currentproject,
+                    currentcompetenties: this.update_student.currentcompetenties,
                 })
                     .then(response => {
 
@@ -201,6 +260,9 @@
                         }
                         if (error.response.data.errors.currentproject) {
                             this.errors.push(error.response.data.errors.currentproject[0]);
+                        }
+                        if (error.response.data.errors.currentcompetenties) {
+                            this.errors.push(error.response.data.errors.currentcompetenties[0]);
                         }
                     });
             },
@@ -219,7 +281,23 @@
 
                         });
                 }
-            }
+            },
+            //detailsoverzicht
+             initShowStudent()
+            {
+                $("#details_student_model").modal("show");
+            },
+            showStudents()
+            {
+                axios.get('/student')
+                    
+            },
+            detailsStudent(index)
+            {
+                
+                $("#details_student_model").modal("show");
+                this.details_student = this.students[index];
+            },
         }
     }
 </script>

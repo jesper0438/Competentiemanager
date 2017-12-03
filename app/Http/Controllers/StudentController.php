@@ -52,6 +52,7 @@ class StudentController extends Controller
         $student = Student::create([
             'name' => request('name'),
             'currentproject'        => request('currentproject'),
+            'currentcompetenties' => request('currentcompetenties'),
             'user_id'     => Auth::user()->id
         ]);
 
@@ -99,6 +100,7 @@ class StudentController extends Controller
 
         $student->name = request('name');
         $student->currentproject = request('currentproject');
+        $student->currentcompetenties = request('currentcompetenties');
         $student->save();
 
         return response()->json([
@@ -113,7 +115,12 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Student $student)
-    {
-        //
+   {
+        $student->id = request('id');
+        $student->delete();
+        // Op basis van het geselecteerde id wordt deze verwijderd
+        return response()->json([
+        'message' => 'het project is verwijderd!',
+        ], 200);
     }
 }

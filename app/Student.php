@@ -10,5 +10,6 @@ class Student extends Model
         'user_id',
         'name',
         'currentproject',
+        'currentcompetenties',
     ];
 }

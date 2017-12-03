@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->text('name');
             $table->text('currentproject');
+            $table->text('currentcompetenties');
             $table->timestamps();
 
         });

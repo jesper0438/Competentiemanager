@@ -6,6 +6,7 @@ $factory->define(App\Student::class, function (Faker $faker) {
     return [
         'name' => $faker->name(),
         'currentproject' => $faker->name(),
-        'user_id' => $faker->numberBetween($min = 1, $max = 1 )
+        'user_id' => $faker->numberBetween($min = 1, $max = 1 ),
+        'currentcompetenties' => $faker->sentence()
     ];
 });
