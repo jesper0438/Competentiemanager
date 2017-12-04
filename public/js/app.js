@@ -47472,12 +47472,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             student: {
                 name: '',
+                email: '',
+                amountec: '',
                 currentproject: '',
                 currentcompetenties: ''
             },
@@ -47500,6 +47540,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/student', {
                 name: this.student.name,
+                email: this.student.email,
+                amountec: this.student.amountec,
                 currentproject: this.student.currentproject,
                 currentcompetenties: this.student.currentcompetenties
             }).then(function (response) {
@@ -47514,6 +47556,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (error.response.data.errors.name) {
                     _this.errors.push(error.response.data.errors.name[0]);
                 }
+                if (error.response.data.errors.email) {
+                    _this.errors.push(error.response.data.errors.email[0]);
+                }
+                if (error.response.data.errors.amountec) {
+                    _this.errors.push(error.response.data.errors.amountec[0]);
+                }
                 if (error.response.data.errors.currentproject) {
                     _this.errors.push(error.response.data.errors.currentproject[0]);
                 }
@@ -47524,6 +47572,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         reset: function reset() {
             this.student.name = '';
+            this.student.email = '';
+            this.student.amountec = '';
             this.student.currentproject = '';
             this.student.currentcompetenties = '';
         },
@@ -47545,6 +47595,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.patch('/student/' + this.update_student.id, {
                 name: this.update_student.name,
+                email: this.update_student.email,
+                amountec: this.update_student.amountec,
                 currentproject: this.update_student.currentproject,
                 currentcompetenties: this.update_student.currentcompetenties
             }).then(function (response) {
@@ -47554,6 +47606,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.errors = [];
                 if (error.response.data.errors.name) {
                     _this3.errors.push(error.response.data.errors.name[0]);
+                }
+                if (error.response.data.errors.email) {
+                    _this3.errors.push(error.response.data.errors.email[0]);
+                }
+                if (error.response.data.errors.amountec) {
+                    _this3.errors.push(error.response.data.errors.amountec[0]);
                 }
                 if (error.response.data.errors.currentproject) {
                     _this3.errors.push(error.response.data.errors.currentproject[0]);
@@ -47642,6 +47700,10 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(index + 1))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(student.name))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(student.email))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(student.amountec))]),
                             _vm._v(" "),
                             _c("td", [
                               _vm._v(
@@ -47764,6 +47826,70 @@ var render = function() {
                           return
                         }
                         _vm.$set(_vm.student, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "email" } }, [_vm._v("Email:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student.email,
+                        expression: "student.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "email",
+                      id: "email",
+                      placeholder: "Email"
+                    },
+                    domProps: { value: _vm.student.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.student, "email", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "amountec" } }, [
+                    _vm._v("Studiepunten:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.student.amountec,
+                        expression: "student.amountec"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "amountec",
+                      id: "amountec",
+                      placeholder: "Studiepunten"
+                    },
+                    domProps: { value: _vm.student.amountec },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.student, "amountec", $event.target.value)
                       }
                     }
                   })
@@ -47927,6 +48053,66 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Email:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.update_student.email,
+                        expression: "update_student.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Email" },
+                    domProps: { value: _vm.update_student.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.update_student,
+                          "email",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Studiepunten:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.update_student.amountec,
+                        expression: "update_student.amountec"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Studiepunten" },
+                    domProps: { value: _vm.update_student.amountec },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.update_student,
+                          "amountec",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Huidig project:")]),
                   _vm._v(" "),
                   _c("input", {
@@ -48059,6 +48245,66 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Email:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_student.email,
+                        expression: "details_student.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Email" },
+                    domProps: { value: _vm.details_student.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_student,
+                          "email",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Studiepunten:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_student.amountec,
+                        expression: "details_student.amountec"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Studiepunten" },
+                    domProps: { value: _vm.details_student.amountec },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_student,
+                          "amountec",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Huidig project:")]),
                   _vm._v(" "),
                   _c("input", {
@@ -48140,6 +48386,18 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("th", [_vm._v(" Naam\n                            ")]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                Emailadres\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                Studiepunten\n                            "
+        )
+      ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(

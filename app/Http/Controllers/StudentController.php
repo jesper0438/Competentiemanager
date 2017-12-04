@@ -46,11 +46,16 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'currentproject'  => 'required|max:255',
+            'email' => 'required',
+            'amountec' => 'required',
+            'currentproject'        => 'required|max:255',
+            'currentcompetenties' => 'required',
         ]);
 
         $student = Student::create([
             'name' => request('name'),
+            'email' => request('email'),
+            'amountec' => request('amountec'),
             'currentproject'        => request('currentproject'),
             'currentcompetenties' => request('currentcompetenties'),
             'user_id'     => Auth::user()->id
@@ -95,10 +100,15 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required',
+            'amountec' => 'required',
             'currentproject'        => 'required|max:255',
+            'currentcompetenties' => 'required',
         ]);
 
         $student->name = request('name');
+        $student->email = request('email');
+        $student->amountec = request('amountec');
         $student->currentproject = request('currentproject');
         $student->currentcompetenties = request('currentcompetenties');
         $student->save();

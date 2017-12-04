@@ -19,6 +19,12 @@
                                 </th>
                                 <th> Naam
                                 </th>
+                                 <th>
+                                    Emailadres
+                                </th>
+                                 <th>
+                                    Studiepunten
+                                </th>
                                 <th>
                                     Huidig project
                                 </th>
@@ -32,6 +38,8 @@
                             <tr v-for="(student, index) in students">
                                 <td>{{ index + 1 }}</td>
                                 <td>{{ student.name }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.amountec }}</td>
                                 <td>
                                     {{ student.currentproject }}
                                 </td>
@@ -73,6 +81,16 @@
                                    v-model="student.name">
                         </div>
                         <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" name="email" id="email" placeholder="Email" class="form-control"
+                                   v-model="student.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="amountec">Studiepunten:</label>
+                            <input type="text" name="amountec" id="amountec" placeholder="Studiepunten" class="form-control"
+                                   v-model="student.amountec">
+                        </div>
+                        <div class="form-group">
                             <label for="currentproject">Huidig project:</label>
                             <input type="text" name="currentproject" id="currentproject" placeholder="Huidig project" class="form-control"
                                    v-model="student.currentproject">
@@ -112,6 +130,16 @@
                                    v-model="update_student.name">
                         </div>
                         <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" placeholder="Email" class="form-control"
+                                   v-model="update_student.email">
+                        </div>
+                         <div class="form-group">
+                            <label>Studiepunten:</label>
+                            <input type="text" placeholder="Studiepunten" class="form-control"
+                                   v-model="update_student.amountec">
+                        </div>
+                         <div class="form-group">
                             <label>Huidig project:</label>
                             <input type="text" placeholder="Huidig project" class="form-control"
                                    v-model="update_student.currentproject">
@@ -148,6 +176,16 @@
                                    v-model="details_student.name">
                         </div>
                         <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" placeholder="Email" class="form-control"
+                                   v-model="details_student.email">
+                        </div>
+                        <div class="form-group">
+                            <label>Studiepunten:</label>
+                            <input type="text" placeholder="Studiepunten" class="form-control"
+                                   v-model="details_student.amountec">
+                        </div>
+                        <div class="form-group">
                             <label>Huidig project:</label>
                             <input type="text" placeholder="Huidig project" class="form-control"
                                    v-model="details_student.currentproject">
@@ -172,8 +210,10 @@
             return {
                 student: {
                     name: '',
+                    email: '',
+                    amountec: '',
                     currentproject: '',
-                    currentcompetenties: ''
+                    currentcompetenties: '',
                 },
                 errors: [],
                 students: [],
@@ -195,6 +235,8 @@
             {
                 axios.post('/student', {
                     name: this.student.name,
+                    email: this.student.email,
+                    amountec: this.student.amountec,
                     currentproject: this.student.currentproject,
                     currentcompetenties: this.student.currentcompetenties,
                 })
@@ -212,6 +254,12 @@
                         if (error.response.data.errors.name) {
                             this.errors.push(error.response.data.errors.name[0]);
                         }
+                        if (error.response.data.errors.email) {
+                            this.errors.push(error.response.data.errors.email[0]);
+                        }
+                        if (error.response.data.errors.amountec) {
+                            this.errors.push(error.response.data.errors.amountec[0]);
+                        }
                         if (error.response.data.errors.currentproject) {
                             this.errors.push(error.response.data.errors.currentproject[0]);
                         }
@@ -223,6 +271,8 @@
             reset()
             {
                 this.student.name = '';
+                this.student.email = '';
+                this.student.amountec = '';
                 this.student.currentproject = '';
                 this.student.currentcompetenties = '';
             },
@@ -245,6 +295,8 @@
             {
                 axios.patch('/student/' + this.update_student.id, {
                     name: this.update_student.name,
+                    email: this.update_student.email,
+                    amountec: this.update_student.amountec,
                     currentproject: this.update_student.currentproject,
                     currentcompetenties: this.update_student.currentcompetenties,
                 })
@@ -257,6 +309,12 @@
                         this.errors = [];
                         if (error.response.data.errors.name) {
                             this.errors.push(error.response.data.errors.name[0]);
+                        }
+                        if (error.response.data.errors.email) {
+                            this.errors.push(error.response.data.errors.email[0]);
+                        }
+                        if (error.response.data.errors.amountec) {
+                            this.errors.push(error.response.data.errors.amountec[0]);
                         }
                         if (error.response.data.errors.currentproject) {
                             this.errors.push(error.response.data.errors.currentproject[0]);
