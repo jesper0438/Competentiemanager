@@ -8350,3 +8350,10 @@ button.close {
   }
 }
 
+body,
+html {
+  background-image: url("https://fs.myhz.nl/adfs/portal/illustration/illustration.png");
+  margin: 0;
+  padding: 0;
+}
+
