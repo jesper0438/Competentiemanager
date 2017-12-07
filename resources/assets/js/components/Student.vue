@@ -47,9 +47,9 @@
                                     {{ student.currentcompetenties }}
                                 </td>
                                 <td>
-                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
+                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs">Bewerk</button>
                                     <button @click="detailsStudent(index)" class="btn btn-success btn-xs">Bekijk details</button>
-                                    <button @click="deleteStudent(index)" class="btn btn-danger btn-xs">Delete</button>
+                                    <button @click="deleteStudent(index)" class="btn btn-danger btn-xs">Verwijderen</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -213,7 +213,7 @@
                     email: '',
                     amountec: '',
                     currentproject: '',
-                    currentcompetenties: '',
+                    currentcompetenties: ''
                 },
                 errors: [],
                 students: [],
