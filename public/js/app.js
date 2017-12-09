@@ -47732,7 +47732,7 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("Edit")]
+                                [_vm._v("Bewerk")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -47758,7 +47758,7 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("Delete")]
+                                [_vm._v("Verwijderen")]
                               )
                             ])
                           ])
