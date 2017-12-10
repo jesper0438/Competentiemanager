@@ -46466,6 +46466,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -46479,6 +46533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             errors: [],
             projects: [],
+            details_project: [],
             update_project: {}
         };
     },
@@ -46588,6 +46643,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.projects.splice(index, 1);
                 }).catch(function (error) {});
             }
+        },
+
+        //detailsoverzicht voor het project.
+        detailsProject: function detailsProject(index) {
+
+            $("#details_project_model").modal("show");
+            this.details_project = this.projects[index];
         }
     }
 });
@@ -46694,6 +46756,19 @@ var render = function() {
                                   }
                                 },
                                 [_vm._v("Edit")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary btn-xs",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.detailsProject(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Bekijk details")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -47152,6 +47227,190 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { tabindex: "-1", role: "dialog", id: "details_project_model" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3, false, false),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        })
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Opdrachtgever:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_project.opdrachtgever,
+                        expression: "details_project.opdrachtgever"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "opdrachtgever" },
+                    domProps: { value: _vm.details_project.opdrachtgever },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_project,
+                          "opdrachtgever",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Uitvoerlocatie:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_project.uitvoerlocatie,
+                        expression: "details_project.uitvoerlocatie"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "uitvoerlocatie" },
+                    domProps: { value: _vm.details_project.uitvoerlocatie },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_project,
+                          "uitvoerlocatie",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Doel:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_project.doel,
+                        expression: "details_project.doel"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "doel" },
+                    domProps: { value: _vm.details_project.doel },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_project,
+                          "doel",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Competenties:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_project.competenties,
+                        expression: "details_project.competenties"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "competenties" },
+                    domProps: { value: _vm.details_project.competenties },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_project,
+                          "competenties",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Maxleden:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_project.maxleden,
+                        expression: "details_project.maxleden"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "maxleden" },
+                    domProps: { value: _vm.details_project.maxleden },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_project,
+                          "maxleden",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(4, false, false)
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -47194,6 +47453,12 @@ var staticRenderFns = [
       _c("th", [
         _vm._v(
           "\n                                Maxleden\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                Opties\n                            "
         )
       ])
     ])
@@ -47238,6 +47503,42 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Update Project")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Details van Project")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
     ])
   }
 ]
@@ -47304,14 +47605,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -47639,12 +47932,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         //detailsoverzicht
-        initShowStudent: function initShowStudent() {
-            $("#details_student_model").modal("show");
-        },
-        showStudents: function showStudents() {
-            axios.get('/student');
-        },
         detailsStudent: function detailsStudent(index) {
 
             $("#details_student_model").modal("show");
@@ -47708,22 +47995,6 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(student.email))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(student.amountec))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(student.currentproject) +
-                                  "\n                            "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(student.currentcompetenties) +
-                                  "\n                            "
-                              )
-                            ]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -48405,18 +48676,6 @@ var staticRenderFns = [
       _c("th", [
         _vm._v(
           "\n                                Studiepunten\n                            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v(
-          "\n                                Huidig project\n                            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v(
-          "\n                                Huidige competenties\n                            "
         )
       ]),
       _vm._v(" "),

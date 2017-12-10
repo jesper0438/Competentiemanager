@@ -32,6 +32,9 @@
                                 <th>
                                     Maxleden
                                 </th>
+                                <th>
+                                    Opties
+                                </th>
                             </tr>
                             <tr v-for="(project, index) in projects">
                                 <td>{{ index + 1 }}</td>
@@ -52,6 +55,7 @@
                                 </td>
                                 <td>
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
+                                    <button @click="detailsProject(index)" class="btn btn-primary btn-xs">Bekijk details</button>
                                     <button @click="deleteProject(index)" class="btn btn-danger btn-xs">Delete</button>
                                 </td>
                             </tr>
@@ -162,6 +166,56 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+        <!-- details -->
+         <div class="modal fade" tabindex="-1" role="dialog" id="details_project_model">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Details van Project</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Opdrachtgever:</label>
+                            <input type="text" placeholder="opdrachtgever" class="form-control"
+                                   v-model="details_project.opdrachtgever">
+                        </div>
+                        <div class="form-group">
+                            <label>Uitvoerlocatie:</label>
+                            <input type="text" placeholder="uitvoerlocatie" class="form-control"
+                                   v-model="details_project.uitvoerlocatie">
+                        </div>
+                        <div class="form-group">
+                            <label>Doel:</label>
+                            <input type="text" placeholder="doel" class="form-control"
+                                   v-model="details_project.doel">
+                        </div>
+                        <div class="form-group">
+                            <label>Competenties:</label>
+                            <input type="text" placeholder="competenties" class="form-control"
+                                   v-model="details_project.competenties">
+                        </div>
+                        <div class="form-group">
+                            <label>Maxleden:</label>
+                            <input type="text" placeholder="maxleden" class="form-control"
+                                   v-model="details_project.maxleden">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
     </div>
 </template>
 
@@ -178,6 +232,7 @@
                 },
                 errors: [],
                 projects: [],
+                details_project: [],
                 update_project: {}
             }
         },
@@ -299,7 +354,14 @@
 
                         });
                 }
-            }
+            },
+              //detailsoverzicht voor het project.
+            detailsProject(index)
+            {
+                
+                $("#details_project_model").modal("show");
+                this.details_project = this.projects[index];
+            },
         }
     }
 </script>

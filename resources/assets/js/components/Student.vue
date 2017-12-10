@@ -25,14 +25,10 @@
                                  <th>
                                     Studiepunten
                                 </th>
+                               <!-- Huidig project en competenties alleen te zien in details, dit voorkomt een informatieoverload -->
+
                                 <th>
-                                    Huidig project
-                                </th>
-                                <th>
-                                    Huidige competenties
-                                </th>
-                                <th>
-                                    Action
+                                    Opties
                                 </th>
                             </tr>
                             <tr v-for="(student, index) in students">
@@ -40,12 +36,8 @@
                                 <td>{{ student.name }}</td>
                                 <td>{{ student.email }}</td>
                                 <td>{{ student.amountec }}</td>
-                                <td>
-                                    {{ student.currentproject }}
-                                </td>
-                                <td>
-                                    {{ student.currentcompetenties }}
-                                </td>
+                                <!-- Huidig project en competenties alleen te zien in details, dit voorkomt een informatieoverload -->
+                              
                                 <td>
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Bewerk</button>
                                     <button @click="detailsStudent(index)" class="btn btn-primary btn-xs">Bekijk details</button>
@@ -345,15 +337,6 @@
                 }
             },
             //detailsoverzicht
-             initShowStudent()
-            {
-                $("#details_student_model").modal("show");
-            },
-            showStudents()
-            {
-                axios.get('/student')
-                    
-            },
             detailsStudent(index)
             {
                 
