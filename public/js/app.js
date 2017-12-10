@@ -47510,6 +47510,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -47738,7 +47742,7 @@ var render = function() {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-success btn-xs",
+                                  staticClass: "btn btn-primary btn-xs",
                                   on: {
                                     click: function($event) {
                                       _vm.detailsStudent(index)
@@ -48155,7 +48159,10 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Huidig project" },
+                    attrs: {
+                      type: "text",
+                      placeholder: "Huidige competenties"
+                    },
                     domProps: { value: _vm.update_student.currentcompetenties },
                     on: {
                       input: function($event) {
@@ -48364,7 +48371,9 @@ var render = function() {
                       }
                     }
                   })
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(4, false, false)
               ])
             ])
           ]
@@ -48479,6 +48488,21 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Details")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
     ])
   }
 ]

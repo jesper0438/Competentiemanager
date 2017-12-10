@@ -48,7 +48,7 @@
                                 </td>
                                 <td>
                                     <button @click="initUpdate(index)" class="btn btn-success btn-xs">Bewerk</button>
-                                    <button @click="detailsStudent(index)" class="btn btn-success btn-xs">Bekijk details</button>
+                                    <button @click="detailsStudent(index)" class="btn btn-primary btn-xs">Bekijk details</button>
                                     <button @click="deleteStudent(index)" class="btn btn-danger btn-xs">Verwijderen</button>
                                 </td>
                             </tr>
@@ -146,7 +146,7 @@
                         </div>
                         <div class="form-group">
                             <label>Huidige competenties:</label>
-                            <input type="text" placeholder="Huidig project" class="form-control"
+                            <input type="text" placeholder="Huidige competenties" class="form-control"
                                    v-model="update_student.currentcompetenties">
                         </div>
                     </div>
@@ -195,6 +195,10 @@
                             <input type="text" placeholder="Huidig project" class="form-control"
                                    v-model="details_student.currentcompetenties">
                         </div>
+                         <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        
+                    </div>
                     </div>
                     
                 </div><!-- /.modal-content -->
