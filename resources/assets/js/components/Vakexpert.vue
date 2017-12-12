@@ -39,12 +39,14 @@
                                     {{ vakexpert.competentie }}
                                 </td>
                                 <td>
-                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
-                                    <button @click="deleteVakexpert(index)" class="btn btn-danger btn-xs">Delete</button>
-                                </td>
-                                <td>
                                     {{ vakexpert.description }}
                                 </td>
+                                <td>
+                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs">Edit</button>
+                                    <button @click="detailsVakexpert(index)" class="btn btn-primary btn-xs">Bekijk details</button>
+                                    <button @click="deleteVakexpert(index)" class="btn btn-danger btn-xs">Delete</button>
+                                </td>
+
                             </tr>
                             </tbody>
                         </table>
@@ -131,6 +133,45 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <!-- details -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="details_vakexpert_model">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Details van expert</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-danger" v-if="errors.length > 0">
+                            <ul>
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Naam:</label>
+                            <input type="text" placeholder="Name" class="form-control"
+                                   v-model="details_vakexpert.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Competentie:</label>
+                            <input type="text" placeholder="competentie" class="form-control"
+                                   v-model="details_vakexpert.competentie">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <input type="text" placeholder="description" class="form-control"
+                                   v-model="details_vakexpert.description">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
     </div>
 </template>
@@ -146,6 +187,7 @@
                 },
                 errors: [],
                 vakexperts: [],
+                details_vakexpert: [],
                 update_vakexpert: {}
             }
         },
@@ -253,6 +295,11 @@
                         });
                 }
             },
-        },
+            detailsVakexpert(index)
+            {
+                $("#details_vakexpert_model").modal("show");
+                this.details_vakexpert = this.vakexperts[index];
+            },
+        }
     }
 </script>

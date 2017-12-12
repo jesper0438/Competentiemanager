@@ -45615,6 +45615,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45626,6 +45667,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             errors: [],
             vakexperts: [],
+            details_vakexpert: [],
             update_vakexpert: {}
         };
     },
@@ -45720,6 +45762,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.vakexperts.splice(index, 1);
                 }).catch(function (error) {});
             }
+        },
+        detailsVakexpert: function detailsVakexpert(index) {
+            $("#details_vakexpert_model").modal("show");
+            this.details_vakexpert = this.vakexperts[index];
         }
     }
 });
@@ -45793,6 +45839,14 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(vakexpert.description) +
+                                  "\n                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
                               _c(
                                 "button",
                                 {
@@ -45809,6 +45863,19 @@ var render = function() {
                               _c(
                                 "button",
                                 {
+                                  staticClass: "btn btn-primary btn-xs",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.detailsVakexpert(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Bekijk details")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
                                   staticClass: "btn btn-danger btn-xs",
                                   on: {
                                     click: function($event) {
@@ -45817,14 +45884,6 @@ var render = function() {
                                   }
                                 },
                                 [_vm._v("Delete")]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(vakexpert.description) +
-                                  "\n                            "
                               )
                             ])
                           ])
@@ -46153,6 +46212,130 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { tabindex: "-1", role: "dialog", id: "details_vakexpert_model" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3, false, false),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        })
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Naam:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_vakexpert.name,
+                        expression: "details_vakexpert.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Name" },
+                    domProps: { value: _vm.details_vakexpert.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_vakexpert,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Competentie:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_vakexpert.competentie,
+                        expression: "details_vakexpert.competentie"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "competentie" },
+                    domProps: { value: _vm.details_vakexpert.competentie },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_vakexpert,
+                          "competentie",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Description:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.details_vakexpert.description,
+                        expression: "details_vakexpert.description"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "description" },
+                    domProps: { value: _vm.details_vakexpert.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.details_vakexpert,
+                          "description",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(4, false, false)
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -46233,6 +46416,42 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Update Vakexpert")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Details van expert")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
     ])
   }
 ]
@@ -48681,7 +48900,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                Action\n                            "
+          "\n                                Opties\n                            "
         )
       ])
     ])
