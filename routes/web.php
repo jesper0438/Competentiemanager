@@ -26,4 +26,4 @@ Route::get('socialauth/{provider}/callback', 'Auth\SocialAuthController@handlePr
 Route::resource('/vakexpert', 'VakexpertController');
 Route::resource('/project', 'ProjectController');
 Route::resource('/student', 'StudentController');
-Route::resource('/hzapi'), 'HzapiController');
+Route::resource('/hzapi', 'HzapiController');

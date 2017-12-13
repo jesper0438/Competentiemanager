@@ -18,10 +18,10 @@ let routes = [
     {
     	path: '/student',
     	component: Student
-    }
+    },
     {
         path: '/hzapi',
-        component: Hzapi,
+        component: Hzapi
     }
 ];
 
