@@ -7,6 +7,7 @@ import Hzapi from  './components/Hzapi.vue';
 
 
 let routes = [
+
     {
         path: '/',
         component: Vakexpert
@@ -23,6 +24,7 @@ let routes = [
         path: '/hzapi',
         component: Hzapi
     }
+
 ];
 
 

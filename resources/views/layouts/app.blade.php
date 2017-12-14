@@ -56,6 +56,9 @@
                                     <router-link tag="li" to="/student">
                                         <a>Studentenoverzicht</a>
                                     </router-link>
+                                    <router-link tag="li" to="/hzapi">
+                                        <a>APItest</a>
+                                    </router-link>
                                     
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
