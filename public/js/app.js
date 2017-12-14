@@ -49067,6 +49067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /*import axios from "axios";*/
 
@@ -49074,15 +49075,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'HelloWorld',
     data: function data() {
         return {
-            Academie_Id: []
+            resultaat: []
         };
     },
     mounted: function mounted() {
         var _this = this;
 
         this.$http.get("https://apps.hz.nl/Services/algemeen/v1/opleidingsvarianten").then(function (result) {
-            _this.Academie_Id = result.data;
-            console.log(_this.Academie_Id.hzopleiding_code);
+            _this.resultaat = result.data;
+            console.log(_this.resultaat);
         }, function (error) {
             console.error(error);
         });
@@ -49100,9 +49101,9 @@ var render = function() {
   return _c(
     "ul",
     { attrs: { id: "example-1" } },
-    _vm._l(_vm.Academie_Id, function(item) {
+    _vm._l(_vm.resultaat, function(item) {
       return _c("li", [
-        _vm._v("\n        " + _vm._s(item.hzopleiding_code) + "\n    ")
+        _vm._v("\n        " + _vm._s(item.academie_naam) + "\n\n    ")
       ])
     })
   )

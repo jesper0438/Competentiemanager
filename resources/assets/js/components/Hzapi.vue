@@ -1,7 +1,8 @@
 <template>
     <ul id="example-1">
-        <li v-for="item in Academie_Id">
-            {{ item.hzopleiding_code }}
+        <li v-for="item in resultaat">
+            {{ item.academie_naam }}
+
         </li>
     </ul>
 </template>
@@ -13,13 +14,13 @@
         name: 'HelloWorld',
         data () {
             return {
-                Academie_Id: []
+                resultaat: []
             }
         },
         mounted() {
             this.$http.get("https://apps.hz.nl/Services/algemeen/v1/opleidingsvarianten").then(result => {
-                this.Academie_Id = result.data;
-                console.log(this.Academie_Id.hzopleiding_code);
+                this.resultaat = result.data;
+                console.log(this.resultaat);
             }, error => {
                 console.error(error);
             });
