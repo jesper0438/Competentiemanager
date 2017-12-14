@@ -49065,6 +49065,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /*import axios from "axios";*/
 
@@ -49072,15 +49074,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'HelloWorld',
     data: function data() {
         return {
-            academie_id: []
+            Academie_Id: []
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        this.$http.get("https://apps.hz.nl/Services/algemeen/v1/crohos/34139/opleidingsvarianten").then(function (result) {
-            _this.academie_id = result.data.origin;
-            console.log(result.data);
+        this.$http.get("https://apps.hz.nl/Services/algemeen/v1/opleidingsvarianten").then(function (result) {
+            _this.Academie_Id = result.data;
+            console.log(_this.Academie_Id.hzopleiding_code);
         }, function (error) {
             console.error(error);
         });
@@ -49095,9 +49097,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "hello" }, [
-    _c("h1", [_vm._v("Your IP is " + _vm._s(_vm.academie_id))])
-  ])
+  return _c(
+    "ul",
+    { attrs: { id: "example-1" } },
+    _vm._l(_vm.Academie_Id, function(item) {
+      return _c("li", [
+        _vm._v("\n        " + _vm._s(item.hzopleiding_code) + "\n    ")
+      ])
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
