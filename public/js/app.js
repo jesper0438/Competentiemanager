@@ -46796,7 +46796,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.errors = [];
                 if (error.response.data.errors.opdrachtgever) {
                     _this.errors.push(error.response.data.errors.opdrachtgever[0]);
-                    console.log('Problem with opdrachtgever');
                 }
                 if (error.response.data.errors.uitvoerlocatie) {
                     _this.errors.push(error.response.data.errors.uitvoerlocatie[0]);
@@ -49068,11 +49067,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /*import axios from "axios";*/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'HelloWorld',
+    name: 'APIcall',
     data: function data() {
         return {
             resultaat: []
@@ -49098,17 +49125,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "ul",
-    { attrs: { id: "example-1" } },
-    _vm._l(_vm.resultaat, function(item) {
-      return _c("li", [
-        _vm._v("\n        " + _vm._s(item.academie_naam) + "\n\n    ")
-      ])
-    })
-  )
+  return _c("div", { staticClass: "panel-body" }, [
+    _vm.resultaat.length > 0
+      ? _c(
+          "table",
+          {
+            staticClass:
+              "table table-bordered table-condensed  table-responsive"
+          },
+          [
+            _c(
+              "tbody",
+              [
+                _vm._m(0, false, false),
+                _vm._v(" "),
+                _vm._l(_vm.resultaat, function(item) {
+                  return _c("tr", { staticClass: "info" }, [
+                    _c("td", [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(item.id) +
+                          "\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(item.lijstnaam) +
+                          "\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(item.academie_naam) +
+                          "\n            "
+                      )
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      : _vm._e()
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", { staticClass: "info" }, [
+      _c("th", [_vm._v("\n                ID\n            ")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("\n                lijstnaam\n            ")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("\n                Opties\n            ")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
