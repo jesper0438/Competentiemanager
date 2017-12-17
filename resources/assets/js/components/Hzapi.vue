@@ -5,6 +5,7 @@
 
         </li>
     </ul>-->
+    <!--To perform GEt-requests to this public endpoint, you need a browser-plugin like CORS-Everywhere. The endpoint is protected for cors-request -->
     <div class="panel-body">
         <table class="table table-bordered table-condensed  table-responsive" v-if="resultaat.length > 0">
             <tbody>
