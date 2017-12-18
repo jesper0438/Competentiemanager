@@ -14,6 +14,7 @@ class VakexpertTest extends TestCase
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['name' => 'Eennaam']);
     }
+
     /**
      * A test to check if a name is required.
      *
@@ -23,8 +24,8 @@ class VakexpertTest extends TestCase
     {
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['competentie' => 'SRE1a']);
-
     }
+
     /**
      * A test to check if a competentie is required.
      *
@@ -34,7 +35,6 @@ class VakexpertTest extends TestCase
     {
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['description' => 'Beschrijving']);
-
     }
     /**
      * A test to check if a description is required.
@@ -48,6 +48,7 @@ class VakexpertTest extends TestCase
         $this->expectException('Illuminate\Database\QueryException');
         $vakexpert = factory(\App\Vakexpert::class)->create(['name' => null]);
     }
+
     /**
      * A test to check if a error returns when the name-field is empty
      *
