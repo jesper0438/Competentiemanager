@@ -19,6 +19,7 @@ class VakexpertTest extends TestCase
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['name' => 'Eennaam']);
     }
+
     /**
      * A test to check if a name is required.
      *
@@ -28,8 +29,8 @@ class VakexpertTest extends TestCase
     {
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['competentie' => 'SRE1a']);
-
     }
+
     /**
      * A basic test example.
      *
@@ -39,7 +40,6 @@ class VakexpertTest extends TestCase
     {
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['description' => 'Beschrijving']);
-
     }
 
     //negatieve tests
@@ -49,6 +49,7 @@ class VakexpertTest extends TestCase
         $this->expectException('Illuminate\Database\QueryException');
         $vakexpert = factory(\App\Vakexpert::class)->create(['name' => null]);
     }
+
     public function test_a_competentie_is_required()
     {
         $this->expectException('Illuminate\Database\QueryException');
