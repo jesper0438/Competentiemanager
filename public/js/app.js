@@ -49095,6 +49095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /*import axios from "axios";*/
 
@@ -49110,7 +49111,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.$http.get("https://apps.hz.nl/Services/algemeen/v1/opleidingsvarianten").then(function (result) {
             _this.resultaat = result.data;
-            console.log(_this.resultaat);
+            //Indien API-call succesvol is, retourneer de volgende melding
+            console.log("API-Call succesvol");
+            //In geval van error, retourneer onderstaande error
         }, function (error) {
             console.error(error);
         });

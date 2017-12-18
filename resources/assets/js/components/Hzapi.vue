@@ -49,7 +49,9 @@
         mounted() {
             this.$http.get("https://apps.hz.nl/Services/algemeen/v1/opleidingsvarianten").then(result => {
                 this.resultaat = result.data;
-                console.log(this.resultaat);
+                //Indien API-call succesvol is, retourneer de volgende melding
+                console.log("API-Call succesvol");
+                //In geval van error, retourneer onderstaande error
             }, error => {
                 console.error(error);
             });
