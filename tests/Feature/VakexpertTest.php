@@ -6,7 +6,6 @@ use Tests\TestCase;
 
 class VakexpertTest extends TestCase
 {
-
     //Positieve tests
 
     public function test_it_has_a_name()
@@ -36,6 +35,7 @@ class VakexpertTest extends TestCase
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['description' => 'Beschrijving']);
     }
+
     /**
      * A test to check if a description is required.
      *
@@ -50,7 +50,7 @@ class VakexpertTest extends TestCase
     }
 
     /**
-     * A test to check if a error returns when the name-field is empty
+     * A test to check if a error returns when the name-field is empty.
      *
      * @return true
      */
@@ -59,7 +59,8 @@ class VakexpertTest extends TestCase
         $this->expectException('Illuminate\Database\QueryException');
         $vakexpert = factory(\App\Vakexpert::class)->create(['competentie' => null]);
     }
-    /**
+
+    /*
      * A test to check if a error returns when the competentie-field is null
      *
      * @return true
