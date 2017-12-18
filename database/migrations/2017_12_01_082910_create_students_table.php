@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateStudentsTable extends Migration
 {
@@ -22,7 +22,6 @@ class CreateStudentsTable extends Migration
             $table->text('currentproject');
             $table->text('currentcompetenties');
             $table->timestamps();
-
         });
     }
 

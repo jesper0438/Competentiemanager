@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Student;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
+    public function index()
     {
         $students = Student::where(['user_id' => Auth::user()->id])->get();
+
         return response()->json([
             'students'    => $students,
         ], 200);
@@ -41,37 +41,39 @@ class StudentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
-       public function store(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'amountec' => 'required',
+            'name'                  => 'required',
+            'email'                 => 'required',
+            'amountec'              => 'required',
             'currentproject'        => 'required|max:255',
-            'currentcompetenties' => 'required',
+            'currentcompetenties'   => 'required',
         ]);
 
         $student = Student::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'amountec' => request('amountec'),
+            'name'                  => request('name'),
+            'email'                 => request('email'),
+            'amountec'              => request('amountec'),
             'currentproject'        => request('currentproject'),
-            'currentcompetenties' => request('currentcompetenties'),
-            'user_id'     => Auth::user()->id
+            'currentcompetenties'   => request('currentcompetenties'),
+            'user_id'               => Auth::user()->id,
         ]);
 
         return response()->json([
             'student'    => $student,
-            'message' => 'Success'
+            'message'    => 'Success',
         ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param \App\Student $student
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Student $student)
@@ -82,7 +84,8 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param \App\Student $student
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Student $student)
@@ -93,18 +96,19 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Student             $student
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Student $student)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'amountec' => 'required',
+            'name'                  => 'required',
+            'email'                 => 'required',
+            'amountec'              => 'required',
             'currentproject'        => 'required|max:255',
-            'currentcompetenties' => 'required',
+            'currentcompetenties'   => 'required',
         ]);
 
         $student->name = request('name');
@@ -115,18 +119,19 @@ class StudentController extends Controller
         $student->save();
 
         return response()->json([
-            'message' => 'Student updated successfully!'
+            'message' => 'Student updated successfully!',
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Student  $student
+     * @param \App\Student $student
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Student $student)
-   {
+    {
         $student->id = request('id');
         $student->delete();
         // Op basis van het geselecteerde id wordt deze verwijderd
