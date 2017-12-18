@@ -70,9 +70,6 @@
                                 <a class="btn btn-link" href="{{ url('socialauth/facebook') }}">
                                    <i class="fa fa-facebook fa-3x"></i>
                                 </a>
-                                <a class="btn btn-link" href="{{ url('socialauth/twitter') }}">
-                                   <i class="fa fa-twitter fa-3x"></i>
-                                </a>
                             </div>
                         </div>
                     </form>

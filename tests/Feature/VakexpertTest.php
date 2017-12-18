@@ -6,11 +6,6 @@ use Tests\TestCase;
 
 class VakexpertTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
 
     //Positieve tests
 
@@ -31,7 +26,7 @@ class VakexpertTest extends TestCase
 
     }
     /**
-     * A basic test example.
+     * A test to check if a competentie is required.
      *
      * @return true
      */
@@ -41,17 +36,31 @@ class VakexpertTest extends TestCase
         $vakexpert = factory(\App\Vakexpert::class)->create(['description' => 'Beschrijving']);
 
     }
+    /**
+     * A test to check if a description is required.
+     *
+     * @return true
+     */
 
     //negatieve tests
-    // Deze test verwacht een error. De naam van de vakexpert is verplicht in te vullen.
     public function test_a_name_is_required()
     {
         $this->expectException('Illuminate\Database\QueryException');
         $vakexpert = factory(\App\Vakexpert::class)->create(['name' => null]);
     }
+    /**
+     * A test to check if a error returns when the name-field is empty
+     *
+     * @return true
+     */
     public function test_a_competentie_is_required()
     {
         $this->expectException('Illuminate\Database\QueryException');
-        $vakexpert = factory(\App\Vakexpert::class)->create(['vakexpert' => null]);
+        $vakexpert = factory(\App\Vakexpert::class)->create(['competentie' => null]);
     }
+    /**
+     * A test to check if a error returns when the competentie-field is null
+     *
+     * @return true
+     */
 }

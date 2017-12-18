@@ -16,35 +16,55 @@ class StudentTest extends TestCase
         $this->assertGreaterThan(0, $unit->id);
     }
 
-    //Deze test kijkt of er daardwerkelijk een naam is ingevuld
+    /**
+     * A test to check if a id is required.
+     *
+     * @return true
+     */
     public function test_it_has_a_name()
     {
         $student = factory(\App\Student::class)->create(['name' => 'name']);
         $this->assertEquals('name', $student->name);
     }
-
-    //Test die controleert of een email-adres succesvol in de db geplaatst is
+    /**
+     * A test to check if a name is required.
+     *
+     * @return true
+     */
     public function test_it_has_a_email()
     {
         $student = factory(\App\Student::class)->create(['email' => 'name@name.nl']);
         $this->assertEquals('name@name.nl', $student->email);
     }
+    /**
+     * A test to check if a email is required.
+     *
+     * @return true
+     */
 
     //Negatieve tests
-    // Deze test verwacht een error. Naam is verplicht in te vullen
+
     public function test_a_name_is_required()
     {
         $this->expectException('Illuminate\Database\QueryException');
         $student = factory(\App\Student::class)->create(['name' => null]);
     }
+    /**
+     * A test to check if a error popup's when you don't fill in the name field.
+     *
+     * @return true
+     */
 
-    //Deze test verwacht een error, omdat het veld 'amountec' required is in de controller. Negatieve test
     public function test_a_amountec_is_required()
     {
         $this->expectException('Illuminate\Database\QueryException');
         $student = factory(\App\Student::class)->create(['amountec' => null]);
     }
-
+    /**
+     * A test to check if a error returns when you don't fill in the amountec
+     *
+     * @return true
+     */
     // Positieve tests
     public function test_amount_ec_is_required()
     {
