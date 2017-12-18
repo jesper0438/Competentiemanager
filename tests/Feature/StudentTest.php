@@ -26,6 +26,7 @@ class StudentTest extends TestCase
         $student = factory(\App\Student::class)->create(['name' => 'name']);
         $this->assertEquals('name', $student->name);
     }
+
     /**
      * A test to check if a name is required.
      *
@@ -36,6 +37,7 @@ class StudentTest extends TestCase
         $student = factory(\App\Student::class)->create(['email' => 'name@name.nl']);
         $this->assertEquals('name@name.nl', $student->email);
     }
+
     /**
      * A test to check if a email is required.
      *
@@ -49,19 +51,20 @@ class StudentTest extends TestCase
         $this->expectException('Illuminate\Database\QueryException');
         $student = factory(\App\Student::class)->create(['name' => null]);
     }
+
     /**
      * A test to check if a error popup's when you don't fill in the name field.
      *
      * @return true
      */
-
     public function test_a_amountec_is_required()
     {
         $this->expectException('Illuminate\Database\QueryException');
         $student = factory(\App\Student::class)->create(['amountec' => null]);
     }
+
     /**
-     * A test to check if a error returns when you don't fill in the amountec
+     * A test to check if a error returns when you don't fill in the amountec.
      *
      * @return true
      */
