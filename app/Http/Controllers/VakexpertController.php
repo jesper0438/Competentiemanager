@@ -3,28 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\vakexpert;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class VakexpertController extends Controller
 {
-        //Only vissible after authentication
-        public function __construct()
+    //Only vissible after authentication
+    public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-        public function index()
+    public function index()
     {
         $vakexperts = Vakexpert::where(['user_id' => Auth::user()->id])->get();
+
         return response()->json([
             'vakexperts'    => $vakexperts,
         ], 200);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,9 +42,10 @@ class VakexpertController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
-       public function store(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name'        => 'required|max:255',
@@ -50,22 +54,23 @@ class VakexpertController extends Controller
         ]);
 
         $vakexpert = Vakexpert::create([
-            'name'        => request('name'),
+            'name'          => request('name'),
             'competentie'   => request('competentie'),
-            'description' => request('description'),
-            'user_id'     => Auth::user()->id
+            'description'   => request('description'),
+            'user_id'       => Auth::user()->id,
         ]);
 
         return response()->json([
             'vakexpert'    => $vakexpert,
-            'message' => 'Success'
+            'message'      => 'Success',
         ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\vakexpert  $vakexpert
+     * @param \App\vakexpert $vakexpert
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(vakexpert $vakexpert)
@@ -76,7 +81,8 @@ class VakexpertController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\vakexpert  $vakexpert
+     * @param \App\vakexpert $vakexpert
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(vakexpert $vakexpert)
@@ -89,15 +95,16 @@ class VakexpertController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\vakexpert  $vakexpert
+     *
      * @return \Illuminate\Http\Response
      */
-   public function update(Request $request, Vakexpert $vakexpert)
+    public function update(Request $request, Vakexpert $vakexpert)
     {
         $this->validate($request, [
             'name'        => 'required|max:255',
             'competentie' => 'required',
             'description' => 'required',
-            
+
         ]);
 
         $vakexpert->name = request('name');
@@ -106,18 +113,19 @@ class VakexpertController extends Controller
         $vakexpert->save();
 
         return response()->json([
-            'message' => 'Vakexpert updated successfully!'
+            'message' => 'Vakexpert updated successfully!',
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\vakexpert  $vakexpert
+     * @param \App\vakexpert $vakexpert
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Vakexpert $vakexpert)
-     {
+    {
         $vakexpert->id = request('id');
         $vakexpert->delete();
         // Op basis van het geselecteerde id wordt deze verwijderd

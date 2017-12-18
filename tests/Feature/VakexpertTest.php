@@ -2,9 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Vakexpert;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class VakexpertTest extends TestCase
 {
@@ -17,6 +15,5 @@ class VakexpertTest extends TestCase
     {
         $this->assertTrue(true);
         $vakexpert = factory(\App\Vakexpert::class)->create(['name' => 'Eennaam']);
-
     }
 }
