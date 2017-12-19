@@ -57,7 +57,7 @@
                                         <a>Studentenoverzicht</a>
                                     </router-link>
                                     <router-link tag="li" to="/hzapi">
-                                        <a>APItest</a>
+                                        <a>APIcalltest</a>
                                     </router-link>
                                     
                             <li class="dropdown">
