@@ -14,7 +14,7 @@ script:
 language: php
 
 php:
-  - 7.1
+  - 5.6
 
 before_script:
   - cp .env.travis .env
