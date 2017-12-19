@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class vakexpert extends Model
+class Vakexpert extends Model
 {
     protected $fillable = [
         'name',
