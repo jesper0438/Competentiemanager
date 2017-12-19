@@ -55,8 +55,8 @@ return [
         ],
         'testing' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_TEST_HOST', '127.0.0.1'),
-            'database'  => env('DB_TEST_DATABASE', 'competentiemaanger'),
+            'host'      => env('DB_TEST_HOST', 'localhost'),
+            'database'  => env('DB_TEST_DATABASE', 'competentiemanager'),
             'username'  => env('DB_TEST_USERNAME', 'homestead'),
             'password'  => env('DB_TEST_PASSWORD', 'secret'),
             'charset'   => 'utf8',
