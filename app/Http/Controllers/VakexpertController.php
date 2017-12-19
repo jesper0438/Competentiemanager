@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\vakexpert;
+use App\Vakexpert;
 use Auth;
 use Illuminate\Http\Request;
 
