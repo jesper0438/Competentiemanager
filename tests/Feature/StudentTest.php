@@ -77,9 +77,9 @@ class StudentTest extends TestCase
 
     /**
      * A test to check if the amount-ec field is required.
+     *
      * @return true
      */
-
     public function test_if_currentproject_is_required()
     {
         $this->assertTrue(true);
@@ -87,19 +87,18 @@ class StudentTest extends TestCase
     }
 
     /**
+     * A test to check if the currentproject is required.
      *
-     * A test to check if the currentproject is required
      * @return true
      */
-
     public function test_if_currentcompetenties_is_required()
     {
         $this->assertTrue(true);
         $student = factory(\App\Student::class)->create(['currentcompetenties' => 'SRE2A']);
     }
-    /**
+
+    /*
      * A test to check if the currentcompetenties is required
      * @return true
      */
-
 }
