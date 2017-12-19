@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-
 class VakexpertTest extends TestCase
 {
     //Positieve tests
