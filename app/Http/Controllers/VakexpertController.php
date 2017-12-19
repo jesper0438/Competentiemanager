@@ -41,7 +41,7 @@ class VakexpertController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -93,8 +93,8 @@ class VakexpertController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\vakexpert  $vakexpert
+     * @param \Illuminate\Http\Request $request
+     * @param \App\vakexpert           $vakexpert
      *
      * @return \Illuminate\Http\Response
      */
